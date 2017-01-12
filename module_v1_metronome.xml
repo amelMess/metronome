@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_v1_metronome" default="compile.module.v1_metronome">
+  <dirname property="module.v1_metronome.basedir" file="${ant.file.module_v1_metronome}"/>
+  
+  <property name="module.jdk.home.v1_metronome" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.v1_metronome" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.v1_metronome" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.v1_metronome" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="v1_metronome.output.dir" value="${module.v1_metronome.basedir}/out/production/V1_metronome"/>
+  <property name="v1_metronome.testoutput.dir" value="${module.v1_metronome.basedir}/out/test/V1_metronome"/>
+  
+  <path id="v1_metronome.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="v1_metronome.module.production.classpath">
+    <path refid="${module.jdk.classpath.v1_metronome}"/>
+  </path>
+  
+  <path id="v1_metronome.runtime.production.module.classpath">
+    <pathelement location="${v1_metronome.output.dir}"/>
+  </path>
+  
+  <path id="v1_metronome.module.classpath">
+    <path refid="${module.jdk.classpath.v1_metronome}"/>
+    <pathelement location="${v1_metronome.output.dir}"/>
+  </path>
+  
+  <path id="v1_metronome.runtime.module.classpath">
+    <pathelement location="${v1_metronome.testoutput.dir}"/>
+    <pathelement location="${v1_metronome.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.v1_metronome">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.v1_metronome">
+    <patternset refid="excluded.from.module.v1_metronome"/>
+  </patternset>
+  
+  <path id="v1_metronome.module.sourcepath">
+    <dirset dir="${module.v1_metronome.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.v1_metronome" depends="compile.module.v1_metronome.production,compile.module.v1_metronome.tests" description="Compile module V1_metronome"/>
+  
+  <target name="compile.module.v1_metronome.production" depends="register.custom.compilers" description="Compile module V1_metronome; production classes">
+    <mkdir dir="${v1_metronome.output.dir}"/>
+    <javac2 destdir="${v1_metronome.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.v1_metronome}/javac">
+      <compilerarg line="${compiler.args.v1_metronome}"/>
+      <bootclasspath refid="v1_metronome.module.bootclasspath"/>
+      <classpath refid="v1_metronome.module.production.classpath"/>
+      <src refid="v1_metronome.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.v1_metronome"/>
+    </javac2>
+    
+    <copy todir="${v1_metronome.output.dir}">
+      <fileset dir="${module.v1_metronome.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.v1_metronome.tests" depends="register.custom.compilers,compile.module.v1_metronome.production" description="compile module V1_metronome; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.v1_metronome" description="cleanup module">
+    <delete dir="${v1_metronome.output.dir}"/>
+    <delete dir="${v1_metronome.testoutput.dir}"/>
+  </target>
+</project>
