@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="203.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.IHMImpl">
+   <children>
+      <Button fx:id="start" layoutX="106.0" layoutY="136.0" mnemonicParsing="false" text="Start" />
+      <Button fx:id="stop" layoutX="249.0" layoutY="136.0" mnemonicParsing="false" text="Stop" />
+      <Button fx:id="inc" layoutX="384.0" layoutY="136.0" mnemonicParsing="false" onAction="#Inc" text="Inc" />
+      <Button fx:id="dec" layoutX="495.0" layoutY="136.0" mnemonicParsing="false" onAction="#Dec" text="Dec" />
+      <Slider fx:id="slider" layoutX="40.0" layoutY="22.0" orientation="VERTICAL" />
+      <Circle fx:id="led1" fill="#ffffff" layoutX="366.0" layoutY="64.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="led2" fill="#ffffff" layoutX="525.0" layoutY="64.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="301.0" layoutY="56.0" prefHeight="16.0" prefWidth="43.0" text="Led 1" />
+      <Label layoutX="461.0" layoutY="56.0" prefHeight="16.0" prefWidth="43.0" text="Led 2" />
+      <Label fx:id="text" alignment="CENTER" disable="true" layoutX="94.0" layoutY="34.0" prefHeight="75.0" prefWidth="130.0" text="150" textFill="#9a4949">
+         <font>
+            <Font name="DejaVu Serif Bold" size="38.0" />
+         </font>
+         <effect>
+            <Blend mode="COLOR_BURN" />
+         </effect></Label>
+   </children>
+</Pane>
