@@ -51,6 +51,8 @@ public class IHMImpl implements IHM, Initializable {
 
     private Afficheur afficheur;
 
+    private EmetteurSonore emetteurSonore;
+
 
     /**
      * la méthode appellée au lancement du programme
@@ -62,13 +64,14 @@ public class IHMImpl implements IHM, Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.controller = new ControllerImpl(this);
         this.afficheur = new AfficheurImpl(this);
+        this.emetteurSonore = new EmetteurSonoreImpl();
 
 
         start();
         stop();
 
-        slider.setMin(150);
-        slider.setMax(400);
+        slider.setMin(20);
+        slider.setMax(180);
         slider.valueProperty().addListener((ov, oldVal, newVal) -> {
             slider.setValue(newVal.intValue());
 
@@ -92,6 +95,7 @@ public class IHMImpl implements IHM, Initializable {
     @Override
     public void afficherLed1() {
         afficheur.allumerLED1(led1);
+        emetteurSonore.emettreClic();
     }
 
     /**
@@ -100,6 +104,7 @@ public class IHMImpl implements IHM, Initializable {
     @Override
     public void afficherLed2() {
         afficheur.allumerLED2(led2);
+        emetteurSonore.emettreClic();
     }
 
     /**

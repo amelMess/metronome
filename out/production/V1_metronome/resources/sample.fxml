@@ -19,7 +19,7 @@
       <Circle fx:id="led2" fill="#ffffff" layoutX="525.0" layoutY="64.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
       <Label layoutX="301.0" layoutY="56.0" prefHeight="16.0" prefWidth="43.0" text="Led 1" />
       <Label layoutX="461.0" layoutY="56.0" prefHeight="16.0" prefWidth="43.0" text="Led 2" />
-      <Label fx:id="text" alignment="CENTER" disable="true" layoutX="94.0" layoutY="34.0" prefHeight="75.0" prefWidth="130.0" text="150" textFill="#9a4949">
+      <Label fx:id="text" alignment="CENTER" disable="true" layoutX="94.0" layoutY="34.0" prefHeight="75.0" prefWidth="130.0" text="20" textFill="#9a4949">
          <font>
             <Font name="DejaVu Serif Bold" size="38.0" />
          </font>

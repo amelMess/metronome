@@ -16,7 +16,7 @@ public class MoteurImpl implements Moteur{
     private Horloge horloge;
 
 
-    public static final int DEFAULT_BPM = 150;
+    public static final int DEFAULT_BPM = 20;
     public static final int DEFAULT_BPP = 4;
 
 
@@ -41,7 +41,7 @@ public class MoteurImpl implements Moteur{
      */
     @Override
     public void activeDelai(Command cmd) {
-        horloge.activerApresDelai(cmd, bpm*bpp);
+        horloge.activerApresDelai(cmd, (Math.toIntExact((long) ((60.0 / this.bpm) * 1000)))*bpp);
     }
 
     /**
@@ -51,7 +51,7 @@ public class MoteurImpl implements Moteur{
      */
     @Override
     public void activePeriode(Command cmd) {
-        horloge.activerPeriodiquement(cmd,bpm);
+        horloge.activerPeriodiquement(cmd,((Math.toIntExact((long) ((60.0 / this.bpm) * 1000)))));
     }
 
     /**
